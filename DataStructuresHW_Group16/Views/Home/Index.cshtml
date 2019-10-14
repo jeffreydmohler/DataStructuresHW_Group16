@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <title>Data Structure Fun</title>
+</head>
+<body>
+    <div class="w3-sidebar w3-bar-block" style="width:20%">
+        
+            <h3>Data Structure Fun</h3>
+            
+                <!--Stack controller index method-->
+                <a href="@Url.Action("Index", "Stack")"
+                   class="w3-bar-item w3-button">Stack</a>
+           
+                <!--Queue controller index method-->
+                <a href="@Url.Action("Index", "Queue")"
+                   class="w3-bar-item w3-button">Queue</a>
+          
+                <a href="@Url.Action("Index", "Dictionary")"
+                   class="w3-bar-item w3-button">Dictionary</a>
+           
+                <a href="@Url.Action("Exit", "Home")"
+                   class="w3-bar-item w3-button">Exit</a>
+         
+    </div>
+    <div style="margin-left: 20%">
+        <img src="~/Graphics/Data-Structures-In-C-Programming.jpg" class="center" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Queue Index</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="~/Content/Site.css" />
+</head>
+<body>
+    <div class="w3-sidebar w3-bar-block" style="width:25%">
+
+        <h3>Queue Options</h3>
+
+        <a href="@Url.Action("AddOne", "Queue")"
+           class="w3-bar-item w3-button">Add One Item to Queue</a>
+
+        <a href="@Url.Action("AddList", "Queue")"
+           class="w3-bar-item w3-button">Add Huge List of Items to Queue</a>
+
+        <a href="@Url.Action("Display", "Queue")"
+           class="w3-bar-item w3-button">Display Queue</a>
+
+        @model DataStructuresHW_Group16.Models.UserEntry
+
+        @using (Html.BeginForm("Delete", "Queue", FormMethod.Post))
+        {
+            <input type="submit" class="w3-bar-item w3-input" value="Delete from Queue: " />
+
+            @Html.TextBoxFor(delete => delete.userInput)
+        }
+
+        <a href="@Url.Action("Clear", "Queue")"
+               class="w3-bar-item w3-button">Clear Queue</a>
+
+        @using (Html.BeginForm("Search", "Queue", FormMethod.Post))
+        {
+            <input type="submit" class="w3-bar-item w3-input" value="Search Stack: " />
+
+            @Html.TextBoxFor(search => search.sUserInput)
+        }
+
+        <a href="@Url.Action("Return", "Queue")"
+           class="w3-bar-item w3-button">Return to Main Menu</a>
+
+    </div>
+    <div style="margin-left: 25%">
+        @Html.Raw(ViewBag.MyQueue)
+    </div>
+</body>
+</html>

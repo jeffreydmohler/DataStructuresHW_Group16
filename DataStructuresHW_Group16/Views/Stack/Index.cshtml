@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Stack Index</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="~/Content/Site.css" />
+</head>
+<body>
+    <div class="w3-sidebar w3-bar-block" style="width: 20%">
+
+        <h3>Stack Options</h3>
+
+        <a href="@Url.Action("AddOne", "Stack")"
+           class="w3-bar-item w3-button">Add One Item to Stack</a>
+
+        <a href="@Url.Action("AddList", "Stack")"
+           class="w3-bar-item w3-button">Add Huge List of Items to Stack</a>
+
+        <a href="@Url.Action("Display", "Stack")"
+           class="w3-bar-item w3-button">Display Stack</a>
+
+        @model DataStructuresHW_Group16.Models.UserEntry
+
+        @using (Html.BeginForm("Delete", "Stack", FormMethod.Post))
+        {
+            <input type="submit" class="w3-bar-item w3-input" value="Delete from Stack: " />
+            
+            @Html.TextBoxFor(delete => delete.userInput)
+        }
+
+        <a href="@Url.Action("Clear", "Stack")"
+           class="w3-bar-item w3-button">Clear Stack</a>
+
+        @using (Html.BeginForm("Search", "Stack", FormMethod.Post))
+        {
+            <input type="submit" class="w3-bar-item w3-input" value="Search Stack: "/>
+           
+            @Html.TextBoxFor(search => search.sUserInput)
+        }
+
+        <a href="@Url.Action("Return", "Stack")"
+           class="w3-bar-item w3-button">Return to Main Menu</a>
+
+    </div>
+    <div style="margin-left: 20%">
+        @Html.Raw(ViewBag.MyStack)
+    </div>
+</body>
+</html>
