@@ -128,20 +128,28 @@ namespace DataStructuresHW_Group16.Controllers
 
             string sInput = search.sUserInput;
 
-            //checks if input is in structure
-            if (myDictionary.ContainsKey(sInput))
+            //checks if user has input
+            if (sInput == null)
             {
-                ViewBag.MyDictionary = sInput + " was found in ";
+                ViewBag.MyDictionary = "Please enter a Search";
             }
             else
             {
-                ViewBag.MyDictionary = sInput + " was not found. The search took ";
+                //checks if input is in structure
+                if (myDictionary.ContainsKey(sInput))
+                {
+                    ViewBag.MyDictionary = sInput + " was found in ";
+                }
+                else
+                {
+                    ViewBag.MyDictionary = sInput + " was not found. The search took ";
+                }
+                sw.Stop();
+
+                TimeSpan ts = sw.Elapsed;
+
+                ViewBag.MyDictionary += ts + " fractions of a second.";
             }
-            sw.Stop();
-
-            TimeSpan ts = sw.Elapsed;
-
-            ViewBag.MyDictionary += ts + " fractions of a second.";
 
             return View("Index");
         }

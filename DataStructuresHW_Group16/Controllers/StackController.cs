@@ -81,7 +81,7 @@ namespace DataStructuresHW_Group16.Controllers
             bool bPresent = false;//variable to see if input was found
 
             //checks if user has input
-            if (sInput == "")
+            if (sInput == null)
             {
                 ViewBag.MyStack = "Please enter a Search";
             }
@@ -148,20 +148,28 @@ namespace DataStructuresHW_Group16.Controllers
 
             string sInput = search.sUserInput;
 
-            //checks if input is in structure
-            if (myStack.Contains(sInput))
+            //checks if user has input
+            if (sInput == null)
             {
-                ViewBag.MyStack = sInput + " was found in ";
+                ViewBag.MyStack = "Please enter a Search";
             }
             else
             {
-                ViewBag.MyStack = sInput + " was not found. The search took ";
+                //checks if input is in structure
+                if (myStack.Contains(sInput))
+                {
+                    ViewBag.MyStack = sInput + " was found in ";
+                }
+                else
+                {
+                    ViewBag.MyStack = sInput + " was not found. The search took ";
+                }
+                sw.Stop();
+
+                TimeSpan ts = sw.Elapsed;
+
+                ViewBag.MyStack += ts + " fractions of a second.";
             }
-            sw.Stop();
-
-            TimeSpan ts = sw.Elapsed;
-
-            ViewBag.MyStack += ts + " fractions of a second.";
 
             return View("Index");
         }
